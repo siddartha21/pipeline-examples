@@ -1,7 +1,7 @@
 # Introduction
 This is a collection of tips, advice, gotchas and other best practices for using the [Jenkins Pipeline plugin](https://github.com/jenkinsci/workflow-plugin/blob/master/README.md). Contributions and comments are happily accepted.
 
-# General tips and advice
+# General tips and advice.
 * Do everything that makes sense there within `stage`s. This will make your builds easier to visualize, debug, etc.
 * Do all real work that involves running a shell script, building, etc, within `node` blocks, so that it actually happens on a real executor, rather than a flyweight executor on the master node.
 * Get your flows from source control - `Jenkinsfile`s, loading libraries, global [CPS](https://en.wikipedia.org/wiki/Continuation-passing_style) library, you name it - but if you pull the main flow from SCM (i.e., Multibranch with `Jenkinsfile`s or `Pipeline from SCM`), be aware that you may need to whitelist a lot of method calls in the script security plugin. By getting your flows from source control, you benefit from `Jenkinsfile` versioning and also testing and merging against your CD Pipeline definition.
